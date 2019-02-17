@@ -56,7 +56,7 @@ const srv = http.createServer((req, res) => {
       </html>`;
 
             const path = `./public/${body.elementName}.html`;
-            fs.appendFile(path, htmlTemplate, (err, data) => {
+            fs.writeFile(path, htmlTemplate, (err, data) => {
                 if (err) {
                     if (err.code === 'ENOENT') {
                         fs.write('File already exists!');
@@ -73,7 +73,7 @@ const srv = http.createServer((req, res) => {
             if (err) {
                 throw new Error(err);
             } else {
-                let ignore = ['404.html', 'index.html', 'css'];
+                let ignore = ['404.html', 'index.html', 'css', '.keep', '.DS_Store'];
                 let eCount = 0;
                 let links = '';
 
